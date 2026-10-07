@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>CalculaFácil — Calculadoras y herramientas gratis</title>
+<meta name="description" content="CalculaFácil ofrece calculadoras y herramientas gratuitas, rápidas y fáciles de usar.">
+<meta name="keywords" content="calculadora, porcentaje, edad, propina, IMC, fechas, conversiones, herramientas online">
+<style>
+*{box-sizing:border-box}body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Arial,sans-serif;background:#f6f7fb;color:#172033;line-height:1.5}
+header{background:linear-gradient(135deg,#4f46e5,#7c3aed);color:white}.nav{max-width:1150px;margin:auto;padding:18px;display:flex;align-items:center;justify-content:space-between;gap:15px}.logo{font-weight:900;font-size:24px}.nav a{color:#fff;text-decoration:none;margin-left:15px}
+.hero{max-width:950px;margin:auto;text-align:center;padding:58px 18px 38px}.hero h1{font-size:clamp(34px,6vw,58px);line-height:1.05;margin:0 0 14px}.hero p{color:#667085;font-size:18px;margin:0 auto 25px;max-width:700px}.search{width:min(700px,100%);padding:16px 18px;border:1px solid #dfe3ea;border-radius:14px;font-size:16px;box-shadow:0 8px 25px #10182812}
+.ad{max-width:970px;min-height:90px;margin:18px auto;padding:28px 15px;border:1px dashed #c5cad5;background:white;border-radius:14px;text-align:center;color:#98a2b3;font-size:13px}
+.wrap{max-width:1150px;margin:auto;padding:15px 18px 60px}.section-title{text-align:center;margin:20px 0 25px}.section-title h2{margin:0 0 5px;font-size:30px}.section-title p{color:#667085;margin:0}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(245px,1fr));gap:18px}.card{background:#fff;border:1px solid #e5e7eb;border-radius:18px;padding:22px;box-shadow:0 6px 22px #1018280b}.icon{font-size:30px}.card h3{margin:8px 0 5px}.card p{color:#667085;margin:0 0 14px}.tool{display:none;border-top:1px solid #eee;margin-top:15px;padding-top:15px}.tool.open{display:block}.tool input,.tool select{width:100%;padding:11px;margin:5px 0;border:1px solid #dfe3ea;border-radius:9px;font-size:15px}.btn{border:0;background:#4f46e5;color:#fff;padding:11px 15px;border-radius:9px;font-weight:700;cursor:pointer}.btn.alt{background:#eef0ff;color:#4038b8}.result{margin-top:10px;padding:11px;background:#f1f2ff;border-radius:9px;font-weight:700;word-break:break-word}
+.info{background:white;border:1px solid #e5e7eb;border-radius:18px;padding:25px;margin-top:35px}.info h2{margin-top:0}.faq details{background:#fff;border:1px solid #e5e7eb;border-radius:12px;padding:15px;margin:10px 0}.faq summary{font-weight:700;cursor:pointer}
+footer{background:#111827;color:#d1d5db;padding:35px 18px;text-align:center}.footerlinks a{color:#fff;margin:0 8px}.legal{display:none;max-width:850px;margin:30px auto;background:#fff;padding:28px;border-radius:18px}.legal:target{display:block}
+.cookie{position:fixed;left:15px;right:15px;bottom:15px;background:#111827;color:white;padding:15px;border-radius:14px;box-shadow:0 10px 35px #0005;display:flex;gap:15px;align-items:center;justify-content:space-between;z-index:20}.cookie button{white-space:nowrap}
+@media(max-width:650px){.nav{align-items:flex-start;flex-direction:column}.nav a{margin:0 12px 0 0}.cookie{flex-direction:column;align-items:stretch}}
+</style>
+</head>
+<body>
+<header><div class="nav"><div class="logo">🧮 CalculaFácil</div><div><a href="#herramientas">Herramientas</a><a href="#faq">FAQ</a></div></div></header>
+
+<section class="hero">
+<h1>Calculadoras gratis para todos</h1>
+<p>Herramientas rápidas, sencillas y gratuitas para resolver cálculos cotidianos desde tu celular o computadora.</p>
+<input class="search" id="search" oninput="filterTools()" placeholder="🔎 Busca una herramienta...">
+</section>
+
+<div class="ad">ESPACIO PUBLICITARIO — aquí irá la publicidad cuando conectemos una red publicitaria.</div>
+
+<main class="wrap" id="herramientas">
+<div class="section-title"><h2>Herramientas populares</h2><p>Elige una herramienta y obtén tu resultado al instante.</p></div>
+<div class="grid" id="grid">
+
+<!-- Cards -->
+<article class="card" data-key="calculadora básica operaciones"><div class="icon">🧮</div><h3>Calculadora básica</h3><p>Suma, resta, multiplica y divide.</p><button class="btn" onclick="openTool('basic')">Abrir</button><div class="tool" id="basic"><input id="ba" type="number" placeholder="Número 1"><select id="bo"><option value="+">+</option><option value="-">−</option><option value="*">×</option><option value="/">÷</option></select><input id="bb" type="number" placeholder="Número 2"><button class="btn" onclick="basic()">Calcular</button><div class="result" id="br"></div></div></article>
+
+<article class="card" data-key="porcentaje porcentaje de cantidad"><div class="icon">📊</div><h3>Porcentaje</h3><p>Calcula un porcentaje de cualquier cantidad.</p><button class="btn" onclick="openTool('percent')">Abrir</button><div class="tool" id="percent"><input id="pp" type="number" placeholder="Porcentaje"><input id="pn" type="number" placeholder="Cantidad"><button class="btn" onclick="percent()">Calcular</button><div class="result" id="pr"></div></div></article>
+
+<article class="card" data-key="edad fecha nacimiento"><div class="icon">🎂</div><h3>Calculadora de edad</h3><p>Calcula tu edad en años, meses y días.</p><button class="btn" onclick="openTool('age')">Abrir</button><div class="tool" id="age"><input id="bd" type="date"><button class="btn" onclick="age()">Calcular</button><div class="result" id="ar"></div></div></article>
+
+<article class="card" data-key="propina cuenta dinero"><div class="icon">💰</div><h3>Calculadora de propina</h3><p>Calcula propina y total de tu cuenta.</p><button class="btn" onclick="openTool('tip')">Abrir</button><div class="tool" id="tip"><input id="tb" type="number" placeholder="Cuenta"><input id="tp" type="number" value="10" placeholder="Propina %"><button class="btn" onclick="tip()">Calcular</button><div class="result" id="tr"></div></div></article>
+
+<article class="card" data-key="imc peso altura salud"><div class="icon">⚖️</div><h3>Calculadora de IMC</h3><p>Obtén tu índice de masa corporal.</p><button class="btn" onclick="openTool('imc')">Abrir</button><div class="tool" id="imc"><input id="iw" type="number" placeholder="Peso (kg)"><input id="ih" type="number" placeholder="Altura (cm)"><button class="btn" onclick="imc()">Calcular</button><div class="result" id="ir"></div></div></article>
+
+<article class="card" data-key="descuento precio oferta dinero"><div class="icon">🏷️</div><h3>Descuento</h3><p>Calcula cuánto pagarás después de un descuento.</p><button class="btn" onclick="openTool('discount')">Abrir</button><div class="tool" id="discount"><input id="dp" type="number" placeholder="Precio"><input id="dd" type="number" placeholder="Descuento %"><button class="btn" onclick="discount()">Calcular</button><div class="result" id="dr"></div></div></article>
+
+<article class="card" data-key="aumento incremento porcentaje"><div class="icon">📈</div><h3>Aumento porcentual</h3><p>Calcula el nuevo precio después de un aumento.</p><button class="btn" onclick="openTool('increase')">Abrir</button><div class="tool" id="increase"><input id="ip" type="number" placeholder="Cantidad"><input id="ii" type="number" placeholder="Aumento %"><button class="btn" onclick="increase()">Calcular</button><div class="result" id="incr"></div></div></article>
+
+<article class="card" data-key="regla tres proporcionalidad"><div class="icon">📐</div><h3>Regla de tres</h3><p>Resuelve proporciones fácilmente.</p><button class="btn" onclick="openTool('rule')">Abrir</button><div class="tool" id="rule"><input id="ra" type="number" placeholder="A"><input id="rb" type="number" placeholder="B"><input id="rc" type="number" placeholder="C"><button class="btn" onclick="rule()">Calcular D</button><div class="result" id="rr"></div></div></article>
+
+<article class="card" data-key="dias fechas calendario"><div class="icon">📅</div><h3>Días entre fechas</h3><p>Calcula la diferencia entre dos fechas.</p><button class="btn" onclick="openTool('days')">Abrir</button><div class="tool" id="days"><input id="d1" type="date"><input id="d2" type="date"><button class="btn" onclick="days()">Calcular</button><div class="result" id="daysr"></div></div></article>
+
+<article class="card" data-key="temperatura celsius fahrenheit kelvin"><div class="icon">🌡️</div><h3>Temperatura</h3><p>Convierte Celsius, Fahrenheit y Kelvin.</p><button class="btn" onclick="openTool('temp')">Abrir</button><div class="tool" id="temp"><input id="tn" type="number" placeholder="Temperatura"><select id="tf"><option>Celsius</option><option>Fahrenheit</option><option>Kelvin</option></select><select id="tt"><option>Fahrenheit</option><option>Celsius</option><option>Kelvin</option></select><button class="btn" onclick="temp()">Convertir</button><div class="result" id="ter"></div></div></article>
+
+<article class="card" data-key="longitud metros kilometros conversion"><div class="icon">📏</div><h3>Longitud</h3><p>Convierte metros, kilómetros, centímetros y millas.</p><button class="btn" onclick="openTool('length')">Abrir</button><div class="tool" id="length"><input id="ln" type="number" placeholder="Cantidad"><select id="lf"><option>Metros</option><option>Kilómetros</option><option>Centímetros</option><option>Millas</option></select><select id="lt"><option>Kilómetros</option><option>Metros</option><option>Centímetros</option><option>Millas</option></select><button class="btn" onclick="length()">Convertir</button><div class="result" id="ler"></div></div></article>
+
+<article class="card" data-key="peso kilos libras conversion"><div class="icon">⚙️</div><h3>Peso</h3><p>Convierte kilogramos y libras.</p><button class="btn" onclick="openTool('weight')">Abrir</button><div class="tool" id="weight"><input id="wn" type="number" placeholder="Cantidad"><select id="wf"><option>Kilogramos</option><option>Libras</option></select><select id="wt"><option>Libras</option><option>Kilogramos</option></select><button class="btn" onclick="weight()">Convertir</button><div class="result" id="wer"></div></div></article>
+
+<article class="card" data-key="contraseña password seguridad"><div class="icon">🔐</div><h3>Contraseña segura</h3><p>Genera una contraseña aleatoria.</p><button class="btn" onclick="password()">Generar</button><div class="result" id="passr" style="display:none"></div></article>
+
+<article class="card" data-key="promedio notas calificaciones escuela"><div class="icon">🎓</div><h3>Promedio de notas</h3><p>Calcula el promedio de hasta cinco calificaciones.</p><button class="btn" onclick="openTool('avg')">Abrir</button><div class="tool" id="avg"><input id="n1" type="number" placeholder="Nota 1"><input id="n2" type="number" placeholder="Nota 2"><input id="n3" type="number" placeholder="Nota 3"><input id="n4" type="number" placeholder="Nota 4"><input id="n5" type="number" placeholder="Nota 5"><button class="btn" onclick="avg()">Calcular</button><div class="result" id="avgr"></div></div></article>
+
+<article class="card" data-key="interes simple dinero préstamo"><div class="icon">💳</div><h3>Interés simple</h3><p>Calcula interés y monto final.</p><button class="btn" onclick="openTool('interest')">Abrir</button><div class="tool" id="interest"><input id="is" type="number" placeholder="Capital"><input id="irate" type="number" placeholder="Tasa anual %"><input id="iy" type="number" placeholder="Años"><button class="btn" onclick="interest()">Calcular</button><div class="result" id="intr"></div></div></article>
+
+<article class="card" data-key="hora minutos tiempo"><div class="icon">⏱️</div><h3>Conversor de tiempo</h3><p>Convierte horas, minutos y segundos.</p><button class="btn" onclick="openTool('time')">Abrir</button><div class="tool" id="time"><input id="tm" type="number" placeholder="Minutos"><button class="btn" onclick="timeConvert()">Convertir</button><div class="result" id="timr"></div></div></article>
+
+<article class="card" data-key="iva impuesto mexico dinero"><div class="icon">🧾</div><h3>Calculadora de IVA</h3><p>Añade o separa IVA de un precio.</p><button class="btn" onclick="openTool('iva')">Abrir</button><div class="tool" id="iva"><input id="ivp" type="number" placeholder="Precio sin IVA"><input id="ivrate" type="number" value="16" placeholder="IVA %"><button class="btn" onclick="iva()">Calcular</button><div class="result" id="ivar"></div></div></article>
+
+<article class="card" data-key="numeros pares impares"><div class="icon">🔢</div><h3>Par o impar</h3><p>Comprueba rápidamente si un número es par o impar.</p><button class="btn" onclick="openTool('even')">Abrir</button><div class="tool" id="even"><input id="en" type="number" placeholder="Número entero"><button class="btn" onclick="even()">Comprobar</button><div class="result" id="evr"></div></div></article>
+
+<article class="card" data-key="generador numeros aleatorios"><div class="icon">🎲</div><h3>Número aleatorio</h3><p>Genera un número entre dos valores.</p><button class="btn" onclick="openTool('random')">Abrir</button><div class="tool" id="random"><input id="min" type="number" placeholder="Mínimo"><input id="max" type="number" placeholder="Máximo"><button class="btn" onclick="randomNum()">Generar</button><div class="result" id="randr"></div></div></article>
+
+<article class="card" data-key="edad mascota perro gato"><div class="icon">🐶</div><h3>Edad de mascota</h3><p>Estimación recreativa de edad equivalente de perro.</p><button class="btn" onclick="openTool('pet')">Abrir</button><div class="tool" id="pet"><input id="petage" type="number" placeholder="Edad del perro"><button class="btn" onclick="pet()">Calcular</button><div class="result" id="petr"></div></div></article>
+
+</div>
+
+<div class="ad">ESPACIO PUBLICITARIO</div>
+
+<section class="info" id="faq">
+<h2>Preguntas frecuentes</h2>
+<div class="faq">
+<details><summary>¿Las herramientas son gratuitas?</summary><p>Sí. CalculaFácil está diseñado para ofrecer herramientas básicas sin costo.</p></details>
+<details><summary>¿Necesito instalar algo?</summary><p>No. Las herramientas funcionan directamente en el navegador.</p></details>
+<details><summary>¿Los resultados se guardan?</summary><p>Esta versión no guarda tus cálculos en un servidor.</p></details>
+<details><summary>¿Cómo se puede mantener la página?</summary><p>La página puede financiarse mediante publicidad y otras fuentes de monetización compatibles con las políticas de cada plataforma.</p></details>
+</div>
+</section>
+
+<section class="info" id="privacidad">
+<h2>Política de privacidad</h2>
+<p>CalculaFácil busca minimizar la recopilación de datos. Las herramientas de esta versión realizan sus cálculos en el navegador. Si posteriormente se incorporan servicios de analítica, publicidad o formularios, esta política deberá actualizarse para describirlos claramente.</p>
+</section>
+
+<section class="info" id="terminos">
+<h2>Términos de uso</h2>
+<p>Las herramientas se ofrecen con fines informativos y de utilidad general. Los resultados pueden contener errores y deben verificarse cuando una decisión importante dependa de ellos. El usuario utiliza el sitio bajo su propia responsabilidad.</p>
+</section>
+</main>
+
+<footer>
+<p><strong>🧮 CalculaFácil</strong></p>
+<p>Herramientas gratuitas para el día a día.</p>
+<div class="footerlinks"><a href="#privacidad">Privacidad</a><a href="#terminos">Términos</a><a href="#faq">FAQ</a></div>
+<p>© 2026 CalculaFácil</p>
+</footer>
+
+<div class="cookie" id="cookie"><span>🍪 Usamos almacenamiento local únicamente para recordar tu preferencia sobre este aviso.</span><button class="btn" onclick="acceptCookie()">Aceptar</button></div>
+
+<script>
+const $=id=>document.getElementById(id);
+function openTool(id){$(id).classList.toggle('open')}
+function num(id){return Number($(id).value)}
+function basic(){let a=num('ba'),b=num('bb'),o=$('bo').value;if(o==='/'&&b===0)return $('br').textContent='No se puede dividir entre cero.';let r=o==='+'?a+b:o==='-'?a-b:o==='*'?a*b:a/b;$('br').textContent='Resultado: '+r}
+function percent(){$('pr').textContent='Resultado: '+(num('pp')*num('pn')/100)}
+function age(){if(!$('bd').value)return $('ar').textContent='Selecciona una fecha.';let b=new Date($('bd').value),n=new Date(),y=n.getFullYear()-b.getFullYear(),m=n.getMonth()-b.getMonth(),d=n.getDate()-b.getDate();if(d<0){m--;d+=new Date(n.getFullYear(),n.getMonth(),0).getDate()}if(m<0){y--;m+=12}$('ar').textContent=`Edad: ${y} años, ${m} meses y ${d} días.`}
+function tip(){let b=num('tb'),p=num('tp'),t=b*p/100;$('tr').textContent=`Propina: $${t.toFixed(2)} — Total: $${(b+t).toFixed(2)}`}
+function imc(){let w=num('iw'),h=num('ih')/100;if(!w||!h)return $('ir').textContent='Introduce peso y altura.';let x=w/(h*h);$('ir').textContent='IMC: '+x.toFixed(1)}
+function discount(){let p=num('dp'),d=num('dd'),x=p*(1-d/100);$('dr').textContent=`Descuento: $${(p-x).toFixed(2)} — Precio final: $${x.toFixed(2)}`}
+function increase(){let p=num('ip'),i=num('ii'),x=p*(1+i/100);$('incr').textContent='Nuevo valor: '+x.toFixed(2)}
+function rule(){if(num('rb')===0)return $('rr').textContent='B no puede ser cero.';$('rr').textContent='D = '+(num('rb')*num('rc')/num('ra')).toFixed(4)}
+function days(){let a=new Date($('d1').value),b=new Date($('d2').value);if(isNaN(a)||isNaN(b))return $('daysr').textContent='Selecciona ambas fechas.';$('daysr').textContent='Diferencia: '+Math.abs(Math.round((b-a)/86400000))+' días.'}
+function temp(){let x=num('tn'),f=$('tf').value,t=$('tt').value;if(f===t)return $('ter').textContent=x;if(f==='Celsius')x=t==='Fahrenheit'?x*9/5+32:x+273.15;else if(f==='Fahrenheit')x=t==='Celsius'?(x-32)*5/9:(x-32)*5/9+273.15;else x=t==='Celsius'?x-273.15:(x-273.15)*9/5+32;$('ter').textContent=x.toFixed(2)+' °'+(t==='Celsius'?'C':t==='Fahrenheit'?'F':'K')}
+const units={Metros:1,'Kilómetros':1000,'Centímetros':.01,Millas:1609.344};
+function length(){let x=num('ln')*units[$('lf').value]/units[$('lt').value];$('ler').textContent=x.toFixed(5)+' '+$('lt').value}
+function weight(){let x=num('wn'),f=$('wf').value,t=$('wt').value;if(f!==t)x=f==='Kilogramos'?x*2.2046226218:x/2.2046226218;$('wer').textContent=x.toFixed(4)+' '+t}
+function password(){let c='ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz23456789!@#$%&*',s='';for(let i=0;i<16;i++)s+=c[Math.floor(Math.random()*c.length)];$('passr').style.display='block';$('passr').textContent=s}
+function avg(){let a=[1,2,3,4,5].map(i=>num('n'+i)).filter(x=>!Number.isNaN(x));if(!a.length)return $('avgr').textContent='Introduce al menos una nota.';$('avgr').textContent='Promedio: '+(a.reduce((x,y)=>x+y,0)/a.length).toFixed(2)}
+function interest(){let c=num('is'),r=num('irate'),y=num('iy'),i=c*r/100*y;$('intr').textContent=`Interés: $${i.toFixed(2)} — Total: $${(c+i).toFixed(2)}`}
+function timeConvert(){let m=num('tm');$('timr').textContent=`${m} minutos = ${(m/60).toFixed(2)} horas = ${m*60} segundos`}
+function iva(){let p=num('ivp'),r=num('ivrate'),v=p*r/100;$('ivar').textContent=`IVA: $${v.toFixed(2)} — Total: $${(p+v).toFixed(2)}`}
+function even(){let n=num('en');$('evr').textContent=Number.isInteger(n)?(n%2===0?'Es par.':'Es impar.'):'Introduce un número entero.'}
+function randomNum(){let a=Math.ceil(num('min')),b=Math.floor(num('max'));if(b<a)return $('randr').textContent='El máximo debe ser mayor o igual al mínimo.';$('randr').textContent='Número: '+(Math.floor(Math.random()*(b-a+1))+a)}
+function pet(){let a=num('petage');if(a<0)return $('petr').textContent='Edad no válida.';let e=a<=2?a*12+(a===1?0:0):24+(a-2)*4;$('petr').textContent='Edad equivalente aproximada: '+e+' años humanos.'}
+function filterTools(){let q=$('search').value.toLowerCase();document.querySelectorAll('.card').forEach(c=>c.style.display=c.dataset.key.includes(q)?'block':'none')}
+function acceptCookie(){localStorage.setItem('cf_cookie','1');$('cookie').style.display='none'}
+if(localStorage.getItem('cf_cookie'))$('cookie').style.display='none'
+</script>
+</body>
+</html>
